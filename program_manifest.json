@@ -1,0 +1,525 @@
+{
+  "1": [
+    {
+      "name": "array_operations",
+      "path": "Module_1/array_operations.py",
+      "algorithm": "Traverse, insert at an index by right-shifting, delete by left-shifting.",
+      "logic": "Explicit shifts illustrate classical array costs.",
+      "expected": "[10, 15, 20, 30] / 20 [10, 15, 30]",
+      "source": "Core implementation",
+      "trace": "Follow the variables and intermediate states printed by the example."
+    },
+    {
+      "name": "linear_search",
+      "path": "Module_1/linear_search.py",
+      "algorithm": "Inspect elements from left to right until the first match.",
+      "logic": "Return index or -1, counting probes.",
+      "expected": "3",
+      "source": "Six-mark question 13",
+      "trace": "i=0:8; i=1:3; i=2:19; i=3:14 found"
+    },
+    {
+      "name": "recursive_linear_search",
+      "path": "Module_1/recursive_linear_search.py",
+      "algorithm": "Recursively inspect one item per call.",
+      "logic": "Advance the index; stop when found or exhausted.",
+      "expected": "3",
+      "source": "Six-mark question 14",
+      "trace": "indices 0, 1, 2, 3; recursion depth 4"
+    },
+    {
+      "name": "binary_search",
+      "path": "Module_1/binary_search.py",
+      "algorithm": "Halve a sorted search interval until matching or empty.",
+      "logic": "Maintain inclusive low/high boundaries.",
+      "expected": "7",
+      "source": "Six-mark question 15",
+      "trace": "[0,9] mid=4 (27), [5,9] mid=7 (42)"
+    },
+    {
+      "name": "recursive_binary_search",
+      "path": "Module_1/recursive_binary_search.py",
+      "algorithm": "Recursively halve sorted range.",
+      "logic": "Avoid slicing so only logarithmic call frames are used.",
+      "expected": "4",
+      "source": "Six-mark question 17",
+      "trace": "mid 2 -> mid 4 found"
+    },
+    {
+      "name": "first_occurrence",
+      "path": "Module_1/first_occurrence.py",
+      "algorithm": "Modified binary search continues left after a match.",
+      "logic": "Record the candidate index.",
+      "expected": "1",
+      "source": "Challenge 1",
+      "trace": "mid=3 found -> left; mid=1 found -> left; mid=0 smaller; return 1"
+    },
+    {
+      "name": "insertion_position",
+      "path": "Module_1/insertion_position.py",
+      "algorithm": "Lower-bound binary search.",
+      "logic": "Return the first index whose value is not smaller than target.",
+      "expected": "[2, 3, 5]",
+      "source": "Challenge 2",
+      "trace": "15: midpoint 2=12 -> lo=3; midpoint 4=31 -> hi=4; midpoint 3=20 -> hi=3"
+    },
+    {
+      "name": "count_occurrences",
+      "path": "Module_1/count_occurrences.py",
+      "algorithm": "Compute lower/upper bounds to count duplicates.",
+      "logic": "Two logarithmic binary searches.",
+      "expected": "4",
+      "source": "Challenge 3",
+      "trace": "lower_bound=1, upper_bound=5, count=4"
+    },
+    {
+      "name": "loop_growth_counts",
+      "path": "Module_1/loop_growth_counts.py",
+      "algorithm": "Instrument representative linear, logarithmic, triangular loops.",
+      "logic": "Count operations without relying on wall-clock time.",
+      "expected": "(8, 4, 36)",
+      "source": "Six/ten-mark loop analysis",
+      "trace": "linear 8; i:1,2,4,8; triangular 1+...+8=36"
+    },
+    {
+      "name": "time_space_tradeoff",
+      "path": "Module_1/time_space_tradeoff.py",
+      "algorithm": "Compare direct repeated computation with a precomputed lookup table.",
+      "logic": "Cache squares in O(n) extra memory.",
+      "expected": "True [9, 25, 9, 25]",
+      "source": "Section 10",
+      "trace": "table {3:9,5:25}; queries read 9,25,9,25"
+    }
+  ],
+  "2": [
+    {
+      "name": "array_address_calculation",
+      "path": "Module_2/array_address_calculation.py",
+      "algorithm": "Compute offsets in row- and column-major order.",
+      "logic": "Apply lower bounds and element width.",
+      "expected": "1088",
+      "source": "Section 3",
+      "trace": "offset=(4-1)*6+(5-1)=22; address=1000+4*22=1088"
+    },
+    {
+      "name": "array_stack",
+      "path": "Module_2/array_stack.py",
+      "algorithm": "Fixed-capacity LIFO ADT.",
+      "logic": "top is an integer and overflow/underflow are explicit.",
+      "expected": "20 10",
+      "source": "Stack ADT",
+      "trace": "top -1 -> 0 -> 1 -> 0"
+    },
+    {
+      "name": "balanced_brackets",
+      "path": "Module_2/balanced_brackets.py",
+      "algorithm": "Match closing symbols against latest unmatched opener.",
+      "logic": "Stack-based scan.",
+      "expected": "True False",
+      "source": "Stack applications",
+      "trace": "push { [ (; pop (, [, {"
+    },
+    {
+      "name": "infix_to_postfix",
+      "path": "Module_2/infix_to_postfix.py",
+      "algorithm": "Use operator stack, respecting precedence and right-associative exponentiation.",
+      "logic": "Single-letter/digit operands; no unary operators.",
+      "expected": "ABC+*",
+      "source": "Stack expressions",
+      "trace": "A out; * stack; (; B out; + stack; C out; ) emit +; end emit *"
+    },
+    {
+      "name": "postfix_evaluation",
+      "path": "Module_2/postfix_evaluation.py",
+      "algorithm": "Read postfix tokens left-to-right and evaluate from operand stack.",
+      "logic": "Space-separated numeric tokens; operator pops right then left.",
+      "expected": "14.0",
+      "source": "Stack expressions",
+      "trace": "[2], [2,3], [2,3,4], [2,12], [14]"
+    },
+    {
+      "name": "prefix_evaluation",
+      "path": "Module_2/prefix_evaluation.py",
+      "algorithm": "Scan prefix tokens in reverse with an operand stack.",
+      "logic": "Space-separated numeric tokens.",
+      "expected": "14.0",
+      "source": "Stack expressions",
+      "trace": "reverse:4,3,*,2,+"
+    },
+    {
+      "name": "linear_queue",
+      "path": "Module_2/linear_queue.py",
+      "algorithm": "Array FIFO with front and rear indices.",
+      "logic": "Show false overflow after removals.",
+      "expected": "5 6",
+      "source": "Queue ADT",
+      "trace": "front=0,rear=1 -> front=2,rear=1"
+    },
+    {
+      "name": "circular_queue",
+      "path": "Module_2/circular_queue.py",
+      "algorithm": "Wrap indices modulo capacity to reuse array slots.",
+      "logic": "Track size to distinguish empty/full.",
+      "expected": "1 / 2 3",
+      "source": "Circular queue",
+      "trace": "front 0 -> 1 -> 0; slot 0 reused"
+    },
+    {
+      "name": "priority_queue",
+      "path": "Module_2/priority_queue.py",
+      "algorithm": "Store priority-labelled items in a binary min-heap.",
+      "logic": "Lower numeric priority is served first; sequence breaks ties.",
+      "expected": "['high', 'high2', 'low']",
+      "source": "Priority queue",
+      "trace": "priority 1 FIFO tie order, then priority 3"
+    },
+    {
+      "name": "infix_to_prefix",
+      "path": "Module_2/infix_to_prefix.py",
+      "algorithm": "Reverse the postfix reasoning via recursive parsing of precedence.",
+      "logic": "Single-letter operands and parentheses, exponent is right-associative.",
+      "expected": "* A + B C",
+      "source": "Stack expressions",
+      "trace": "parse multiply with right subtree plus"
+    }
+  ],
+  "3": [
+    {
+      "name": "singly_linked_list",
+      "path": "Module_3/singly_linked_list.py",
+      "algorithm": "Maintain linked nodes with head reference.",
+      "logic": "Implement insertion, removal and traversal.",
+      "expected": "[5, 10, 30] 2",
+      "source": "Core operations",
+      "trace": "10 -> 20 -> 30; prepend 5; bypass 20"
+    },
+    {
+      "name": "linked_stack",
+      "path": "Module_3/linked_stack.py",
+      "algorithm": "Use list head as stack top.",
+      "logic": "Push/pop in O(1).",
+      "expected": "2 1",
+      "source": "Linked stack",
+      "trace": "head 1 -> head 2->1 -> head 1 -> None"
+    },
+    {
+      "name": "linked_queue",
+      "path": "Module_3/linked_queue.py",
+      "algorithm": "Keep front and rear pointers to linked nodes.",
+      "logic": "Enqueue and dequeue in O(1).",
+      "expected": "8 9",
+      "source": "Linked queue",
+      "trace": "front/rear 8 -> front8 rear9 -> front9 rear9 -> both None"
+    },
+    {
+      "name": "reverse_linked_list",
+      "path": "Module_3/reverse_linked_list.py",
+      "algorithm": "Reverse next pointers in one pass.",
+      "logic": "Use prev, curr, nxt to preserve remaining nodes.",
+      "expected": "[3, 2, 1]",
+      "source": "Integrated challenge",
+      "trace": "prev:None->1->2->3; curr:1->2->3->None"
+    },
+    {
+      "name": "middle_of_linked_list",
+      "path": "Module_3/middle_of_linked_list.py",
+      "algorithm": "Use slow and fast references.",
+      "logic": "Fast advances twice as quickly; second middle is returned for even lengths.",
+      "expected": "3",
+      "source": "Section 21",
+      "trace": "slow 1->2->3; fast 1->3->5"
+    },
+    {
+      "name": "cycle_detection",
+      "path": "Module_3/cycle_detection.py",
+      "algorithm": "Floyd tortoise/hare test.",
+      "logic": "If fast catches slow, the list contains a cycle.",
+      "expected": "True / False",
+      "source": "Extended practice",
+      "trace": "cycle 2->3->2 causes slow and fast to meet"
+    },
+    {
+      "name": "circular_singly_linked_list",
+      "path": "Module_3/circular_singly_linked_list.py",
+      "algorithm": "Keep tail whose next points at head.",
+      "logic": "O(1) end insert and front delete.",
+      "expected": "1 [2, 3]",
+      "source": "Circular singly list",
+      "trace": "tail3 points head1, then after delete points head2"
+    },
+    {
+      "name": "doubly_linked_list",
+      "path": "Module_3/doubly_linked_list.py",
+      "algorithm": "Maintain prev/next links and head/tail.",
+      "logic": "O(1) operations at both ends.",
+      "expected": "7 [5, 6]",
+      "source": "Doubly linked list",
+      "trace": "5<->6<->7 -> 5<->6"
+    },
+    {
+      "name": "circular_doubly_linked_list",
+      "path": "Module_3/circular_doubly_linked_list.py",
+      "algorithm": "Keep head and tail with circular bidirectional links.",
+      "logic": "Insert and remove at front with constant pointer changes.",
+      "expected": "1 [2, 3]",
+      "source": "Circular doubly linked list",
+      "trace": "head1, tail3; reconnect 3<->2 after removing 1"
+    },
+    {
+      "name": "header_sentinel_list",
+      "path": "Module_3/header_sentinel_list.py",
+      "algorithm": "Maintain a dummy head to simplify edge cases.",
+      "logic": "Insert/delete uniformly via predecessor.",
+      "expected": "True [1]",
+      "source": "Header nodes",
+      "trace": "header -> 1 -> 2; bypass 2"
+    },
+    {
+      "name": "delete_given_node",
+      "path": "Module_3/delete_given_node.py",
+      "algorithm": "Copy successor payload and bypass successor.",
+      "logic": "Only works for non-tail singly linked nodes.",
+      "expected": "[1, 3]",
+      "source": "Integrated challenge 4",
+      "trace": "copy next value 3 into node 2, bypass old node 3"
+    }
+  ],
+  "4": [
+    {
+      "name": "binary_tree_traversals",
+      "path": "Module_4/binary_tree_traversals.py",
+      "algorithm": "Visit root recursively in pre/in/post order.",
+      "logic": "Use standard node objects.",
+      "expected": "[2, 1, 3] [1, 2, 3] [1, 3, 2]",
+      "source": "Traversals",
+      "trace": "pre root-left-right; in left-root-right; post left-right-root"
+    },
+    {
+      "name": "binary_tree_level_order",
+      "path": "Module_4/binary_tree_level_order.py",
+      "algorithm": "Use FIFO queue for breadth-first tree traversal.",
+      "logic": "Append children in left-to-right order.",
+      "expected": "[1, 2, 3]",
+      "source": "Tree traversal",
+      "trace": "queue [1] -> [2,3] -> [3] -> []"
+    },
+    {
+      "name": "bst_operations",
+      "path": "Module_4/bst_operations.py",
+      "algorithm": "Maintain left smaller, right larger; delete using inorder successor.",
+      "logic": "Duplicates ignored.",
+      "expected": "[2, 3, 4, 6, 7, 8] True",
+      "source": "BST operations",
+      "trace": "delete 5 (two children): replace by successor 6, remove old 6"
+    },
+    {
+      "name": "tree_height_size",
+      "path": "Module_4/tree_height_size.py",
+      "algorithm": "Recursively count nodes and maximal edge-depth.",
+      "logic": "Empty height -1, singleton height 0.",
+      "expected": "4 2",
+      "source": "Tree properties",
+      "trace": "leaf height0; node2 height1; root height2"
+    },
+    {
+      "name": "reconstruct_tree",
+      "path": "Module_4/reconstruct_tree.py",
+      "algorithm": "Build tree from preorder and inorder of distinct values.",
+      "logic": "Track inorder indices and consume preorder.",
+      "expected": "[1, 3, 2]",
+      "source": "Reconstruction exercise",
+      "trace": "pre root2; in splits [1] and [3]"
+    },
+    {
+      "name": "expression_tree",
+      "path": "Module_4/expression_tree.py",
+      "algorithm": "Construct tree from space-separated postfix tokens.",
+      "logic": "Operators pop two subtrees; evaluate recursively.",
+      "expected": "14.0",
+      "source": "Expression tree",
+      "trace": "push 2,3,4; combine 3*4; combine 2+12"
+    },
+    {
+      "name": "avl_tree",
+      "path": "Module_4/avl_tree.py",
+      "algorithm": "BST insert with height maintenance and LL/RR/LR/RL rotations.",
+      "logic": "Rebalance whenever absolute balance factor exceeds one.",
+      "expected": "30 [10, 20, 25, 30, 35, 40]",
+      "source": "AVL insert/rotations",
+      "trace": "30,20,10 cause LL rotation; remaining insertions rebalance"
+    },
+    {
+      "name": "right_threaded_tree",
+      "path": "Module_4/right_threaded_tree.py",
+      "algorithm": "Thread null right links to inorder successor.",
+      "logic": "Build a static threaded representation from BST and traverse without stack.",
+      "expected": "[1, 2, 3, 4, 5, 6, 7]",
+      "source": "Threaded binary tree",
+      "trace": "inorder successor threads replace null right links"
+    },
+    {
+      "name": "b_tree",
+      "path": "Module_4/b_tree.py",
+      "algorithm": "Implement minimum-degree B-tree insertion with splitting and search.",
+      "logic": "Minimum degree t means max 2t-1 keys; duplicates ignored.",
+      "expected": "[5, 6, 7, 10, 12, 17, 20, 30] True",
+      "source": "B-tree core insertion/search",
+      "trace": "split full root during insertion; inorder keys sorted"
+    },
+    {
+      "name": "bplus_tree",
+      "path": "Module_4/bplus_tree.py",
+      "algorithm": "Insert keys into linked leaves and split up to the root.",
+      "logic": "Max_keys keys/leaf, internal separators equal first keys of right subtrees; no duplicates.",
+      "expected": "[6, 7, 10, 12, 17, 20] True",
+      "source": "B+ insertion / range challenge",
+      "trace": "search leaf containing 6, scan linked leaves through 20"
+    }
+  ],
+  "5": [
+    {
+      "name": "selection_sort",
+      "path": "Module_5/selection_sort.py",
+      "algorithm": "Sort using selection sort.",
+      "logic": "Work on a copy; return ascending sequence.",
+      "expected": "[1, 2, 3, 4, 5]",
+      "source": "Core sorting",
+      "trace": "Input [5,1,4,2,3]; compare/swap or partition/merge until ascending"
+    },
+    {
+      "name": "bubble_sort",
+      "path": "Module_5/bubble_sort.py",
+      "algorithm": "Sort using bubble sort.",
+      "logic": "Work on a copy; return ascending sequence.",
+      "expected": "[1, 2, 3, 4, 5]",
+      "source": "Core sorting",
+      "trace": "Input [5,1,4,2,3]; compare/swap or partition/merge until ascending"
+    },
+    {
+      "name": "insertion_sort",
+      "path": "Module_5/insertion_sort.py",
+      "algorithm": "Sort using insertion sort.",
+      "logic": "Work on a copy; return ascending sequence.",
+      "expected": "[1, 2, 3, 4, 5]",
+      "source": "Core sorting",
+      "trace": "Input [5,1,4,2,3]; compare/swap or partition/merge until ascending"
+    },
+    {
+      "name": "quick_sort",
+      "path": "Module_5/quick_sort.py",
+      "algorithm": "Sort using quick sort.",
+      "logic": "Work on a copy; return ascending sequence.",
+      "expected": "[1, 2, 3, 4, 5]",
+      "source": "Core sorting",
+      "trace": "Input [5,1,4,2,3]; compare/swap or partition/merge until ascending"
+    },
+    {
+      "name": "merge_sort",
+      "path": "Module_5/merge_sort.py",
+      "algorithm": "Sort using merge sort.",
+      "logic": "Work on a copy; return ascending sequence.",
+      "expected": "[1, 2, 3, 4, 5]",
+      "source": "Core sorting",
+      "trace": "Input [5,1,4,2,3]; compare/swap or partition/merge until ascending"
+    },
+    {
+      "name": "heap_sort",
+      "path": "Module_5/heap_sort.py",
+      "algorithm": "Sort using heap sort.",
+      "logic": "Work on a copy; return ascending sequence.",
+      "expected": "[1, 2, 3, 4, 5]",
+      "source": "Core sorting",
+      "trace": "Input [5,1,4,2,3]; compare/swap or partition/merge until ascending"
+    },
+    {
+      "name": "graph_representations",
+      "path": "Module_5/graph_representations.py",
+      "algorithm": "Represent graph as adjacency list and 0/1 matrix.",
+      "logic": "Undirected graph with vertices 0..n-1.",
+      "expected": "([[1], [0, 2], [1]], [[0, 1, 0], [1, 0, 1], [0, 1, 0]])",
+      "source": "Graph representations",
+      "trace": "edge 0-1 and 1-2 update symmetric cells and neighbors"
+    },
+    {
+      "name": "bfs",
+      "path": "Module_5/bfs.py",
+      "algorithm": "FIFO graph traversal with visited-on-enqueue.",
+      "logic": "Vertices 0..n-1 in adjacency lists.",
+      "expected": "[0, 1, 2, 3]",
+      "source": "Core BFS",
+      "trace": "queue [0] -> [1,2] -> [2,3] -> [3] -> []"
+    },
+    {
+      "name": "dfs",
+      "path": "Module_5/dfs.py",
+      "algorithm": "DFS graph traversal using recursion.",
+      "logic": "Mark before traversing neighbors.",
+      "expected": "[0, 1, 3, 2]",
+      "source": "Core DFS",
+      "trace": "depth 0->1->3; backtrack to 0->2"
+    },
+    {
+      "name": "kruskal_mst",
+      "path": "Module_5/kruskal_mst.py",
+      "algorithm": "Sort edges and accept those joining disjoint components.",
+      "logic": "Union-find with path compression/rank; reject disconnected graphs.",
+      "expected": "6",
+      "source": "Graph MST challenge",
+      "trace": "sorted weights 1,2,3,4,5; accept 1,2,3; reject cycles"
+    },
+    {
+      "name": "prim_mst",
+      "path": "Module_5/prim_mst.py",
+      "algorithm": "Grow MST from vertex 0 via cheapest crossing edge.",
+      "logic": "Heap-based adjacency list, nonnegative or negative weights allowed.",
+      "expected": "6",
+      "source": "Graph MST challenge",
+      "trace": "start0 choose 0-1 (1),1-2(2),2-3(3)"
+    },
+    {
+      "name": "dijkstra",
+      "path": "Module_5/dijkstra.py",
+      "algorithm": "Relax outgoing edges using a min-priority heap.",
+      "logic": "Reject negative weights; return distances and parents.",
+      "expected": "[0, 1, 3, 6]",
+      "source": "Shortest path",
+      "trace": "settle 0; 1=1; 2 improves 4->3; 3=6"
+    },
+    {
+      "name": "floyd_warshall",
+      "path": "Module_5/floyd_warshall.py",
+      "algorithm": "All-pairs shortest paths using every vertex as intermediary.",
+      "logic": "Detect negative cycles via diagonal.",
+      "expected": "[0, 2, 5]",
+      "source": "Shortest path",
+      "trace": "k=1 improves d[0][2] from inf to 5"
+    },
+    {
+      "name": "hash_chaining",
+      "path": "Module_5/hash_chaining.py",
+      "algorithm": "Map keys to buckets and handle collisions with lists.",
+      "logic": "Hash index key mod capacity; unique keys.",
+      "expected": "b True None",
+      "source": "Hashing",
+      "trace": "1 and 8 hash to bucket 1; delete 1 leaves 8"
+    },
+    {
+      "name": "hash_linear_probing",
+      "path": "Module_5/hash_linear_probing.py",
+      "algorithm": "Probe slots sequentially with tombstones.",
+      "logic": "Maintain search chains after deletion.",
+      "expected": "b",
+      "source": "Hashing",
+      "trace": "1 slot1, 8 slot2; deletion makes slot1 tombstone, so search reaches slot2"
+    },
+    {
+      "name": "hash_probe_variants",
+      "path": "Module_5/hash_probe_variants.py",
+      "algorithm": "Compare linear, quadratic, double-hash probe sequences.",
+      "logic": "Prime table size; double-hash step 1+key mod (m-1).",
+      "expected": "linear [4, 5, 6, 7] / quadratic [4, 5, 8, 2] / double [4, 10, 5, 0]",
+      "source": "Hash variants",
+      "trace": "h=4, step=6. Quadratic probing may repeat slots before visiting all slots"
+    }
+  ]
+}
